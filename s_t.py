@@ -19,7 +19,7 @@ st.title("TRADUCTOR.")
 st.subheader("Escucho lo que quieres traducir.")
 
 
-image = Image.open('OIG7.jpg')
+image = Image.open('ia.jpeg')
 
 st.image(image,width=300)
 with st.sidebar:
@@ -73,7 +73,7 @@ if result:
     text = str(result.get("GET_TEXT"))
     in_lang = st.selectbox(
         "Selecciona el lenguaje de Entrada",
-        ("Inglés", "Español", "Bengali", "Coreano", "Mandarín", "Japonés"),
+        ("Inglés", "Español", "Bengali", "Coreano", "Mandarín", "Japonés", ),
     )
     if in_lang == "Inglés":
         input_language = "en"
@@ -87,6 +87,7 @@ if result:
         input_language = "zh-cn"
     elif in_lang == "Japonés":
         input_language = "ja"
+
     
     out_lang = st.selectbox(
         "Selecciona el lenguaje de salida",
@@ -104,6 +105,8 @@ if result:
         output_language = "zh-cn"
     elif out_lang == "Japonés":
         output_language = "ja"
+     elif in_lang == "frances":
+        input_language = "fr"
     
     english_accent = st.selectbox(
         "Selecciona el acento",
@@ -116,6 +119,7 @@ if result:
             "Australia",
             "Irlanda",
             "Sudáfrica",
+            "frances"
         ),
     )
     
@@ -136,6 +140,8 @@ if result:
         tld = "ie"
     elif english_accent == "Sudáfrica":
         tld = "co.za"
+     elif english_accent == "frances":
+        tld = "fr"
     
     
     def text_to_speech(input_language, output_language, text, tld):
